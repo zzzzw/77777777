@@ -1,0 +1,25 @@
+#content{
+    height:1000px;
+    margin:0 auto;
+}
+.passenger{
+    margin:15px;
+    padding:10px;
+    background-color:#FFF;
+    border:1px solid #F8F8FF;
+    height:62px;
+}
+.passenger:hover{
+    color:#5AA5F0;
+    border:1px solid #5AA5F0;
+}
+.selected{
+    border:1px solid #5AA5F0;
+    color:#5AA5F0;
+}
+a.pass-remove{
+    text-decoration: none;
+}
+a{
+    cursor: pointer;
+}

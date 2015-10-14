@@ -1,0 +1,24 @@
+
+#mytab li{
+	 background-color:#96d2ff;
+	 color:#FFFFFF;
+     font-weight:bold;
+}
+#mytab li.active{
+
+    background-color: #FFFFFF;
+    color: #96d2ff;
+    height:94px;
+
+}
+#mytab  li{
+		 height:94px;
+	}
+
+#mytab  li a:hover
+{
+	 background-color:#5aa5f0;
+	 height:94px;
+	
+}
+

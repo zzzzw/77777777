@@ -1,0 +1,1902 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+
+	<meta charset="utf-8" />
+
+	<title>Holy Airplane Management</title>
+
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+	<meta content="" name="description" />
+
+	<meta content="" name="author" />
+
+	<!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+	<link href="<%=basePath%>/resource/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	
+	<!-- 引入dataTables样式 -->
+	<!-- <link rel="stylesheet" href="<%=basePath %>/behind/plane/css/dataTables.bootstrap.min.css"/>-->
+	<link rel="stylesheet" href="<%=basePath %>/behind/plane/css/jquery.dataTables.css"/>
+
+	<link href="<%=basePath%>/resource/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+
+	<link href="<%=basePath%>/resource/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+	<link href="<%=basePath%>/resource/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+
+	<link href="<%=basePath%>/resource/media/css/style.css" rel="stylesheet" type="text/css"/>
+
+	<link href="<%=basePath%>/resource/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+
+	<link href="<%=basePath%>/resource/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+
+	<link href="<%=basePath%>/resource/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+
+	<!-- END GLOBAL MANDATORY STYLES -->
+
+	<!-- BEGIN PAGE LEVEL STYLES --> 
+
+	<link href="<%=basePath%>/resource/media/css/jquery.gritter.css" rel="stylesheet" type="text/css"/>
+
+	<link href="<%=basePath%>/resource/media/css/daterangepicker.css" rel="stylesheet" type="text/css" />
+
+	<link href="<%=basePath%>/resource/media/css/fullcalendar.css" rel="stylesheet" type="text/css"/>
+
+	<link href="<%=basePath%>/resource/media/css/jqvmap.css" rel="stylesheet" type="text/css" media="screen"/>
+
+	<link href="<%=basePath%>/resource/media/css/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+
+	<!-- END PAGE LEVEL STYLES -->
+
+	<link rel="shortcut icon" href="<%=basePath%>/resource/media/image/favicon.ico" />
+	
+	
+	
+	
+
+</head>
+
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+
+<body class="page-header-fixed">
+
+	<!-- BEGIN HEADER -->
+
+	<div class="header navbar navbar-inverse navbar-fixed-top">
+
+		<!-- BEGIN TOP NAVIGATION BAR -->
+
+		<div class="navbar-inner">
+
+			<div class="container-fluid">
+
+				<!-- BEGIN LOGO -->
+
+				<a class="brand" href="index.html" style="color:white;font-size:22;">
+
+				&nbsp;&nbsp;&nbsp;Holy Airplane
+
+				</a>
+
+				<!-- END LOGO -->
+
+				<!-- BEGIN RESPONSIVE MENU TOGGLER -->
+
+				<a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+
+				<img src="<%=basePath%>/resource/media/image/menu-toggler.png" alt="" />
+
+				</a>          
+
+				<!-- END RESPONSIVE MENU TOGGLER -->            
+
+				<!-- BEGIN TOP NAVIGATION MENU -->              
+
+				<ul class="nav pull-right">
+
+					<!-- BEGIN NOTIFICATION DROPDOWN -->   
+
+					<li class="dropdown" id="header_notification_bar">
+
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+						<i class="icon-warning-sign"></i>
+
+						<span class="badge">6</span>
+
+						</a>
+
+						<ul class="dropdown-menu extended notification">
+
+							<li>
+
+								<p>You have 14 new notifications</p>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="label label-success"><i class="icon-plus"></i></span>
+
+								New user registered. 
+
+								<span class="time">Just now</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="label label-important"><i class="icon-bolt"></i></span>
+
+								Server #12 overloaded. 
+
+								<span class="time">15 mins</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="label label-warning"><i class="icon-bell"></i></span>
+
+								Server #2 not respoding.
+
+								<span class="time">22 mins</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="label label-info"><i class="icon-bullhorn"></i></span>
+
+								Application error.
+
+								<span class="time">40 mins</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="label label-important"><i class="icon-bolt"></i></span>
+
+								Database overloaded 68%. 
+
+								<span class="time">2 hrs</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="label label-important"><i class="icon-bolt"></i></span>
+
+								2 user IP blocked.
+
+								<span class="time">5 hrs</span>
+
+								</a>
+
+							</li>
+
+							<li class="external">
+
+								<a href="#">See all notifications <i class="m-icon-swapright"></i></a>
+
+							</li>
+
+						</ul>
+
+					</li>
+
+					<!-- END NOTIFICATION DROPDOWN -->
+
+					<!-- BEGIN INBOX DROPDOWN -->
+
+					<li class="dropdown" id="header_inbox_bar">
+
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+						<i class="icon-envelope"></i>
+
+						<span class="badge">5</span>
+
+						</a>
+
+						<ul class="dropdown-menu extended inbox">
+
+							<li>
+
+								<p>You have 12 new messages</p>
+
+							</li>
+
+							<li>
+
+								<a href="inbox.html?a=view">
+
+								<span class="photo"><img src="<%=basePath%>/resource/media/image/avatar2.jpg" alt="" /></span>
+
+								<span class="subject">
+
+								<span class="from">Lisa Wong</span>
+
+								<span class="time">Just Now</span>
+
+								</span>
+
+								<span class="message">
+
+								Vivamus sed auctor nibh congue nibh. auctor nibh
+
+								auctor nibh...
+
+								</span>  
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="inbox.html?a=view">
+
+								<span class="photo"><img src="<%=basePath%>/resource/media/image/avatar3.jpg" alt="" /></span>
+
+								<span class="subject">
+
+								<span class="from">Richard Doe</span>
+
+								<span class="time">16 mins</span>
+
+								</span>
+
+								<span class="message">
+
+								Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh
+
+								auctor nibh...
+
+								</span>  
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="inbox.html?a=view">
+
+								<span class="photo"><img src="<%=basePath%>/resource/media/image/avatar1.jpg" alt="" /></span>
+
+								<span class="subject">
+
+								<span class="from">Bob Nilson</span>
+
+								<span class="time">2 hrs</span>
+
+								</span>
+
+								<span class="message">
+
+								Vivamus sed nibh auctor nibh congue nibh. auctor nibh
+
+								auctor nibh...
+
+								</span>  
+
+								</a>
+
+							</li>
+
+							<li class="external">
+
+								<a href="inbox.html">See all messages <i class="m-icon-swapright"></i></a>
+
+							</li>
+
+						</ul>
+
+					</li>
+
+					<!-- END INBOX DROPDOWN -->
+
+					<!-- BEGIN TODO DROPDOWN -->
+
+					<li class="dropdown" id="header_task_bar">
+
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+						<i class="icon-tasks"></i>
+
+						<span class="badge">5</span>
+
+						</a>
+
+						<ul class="dropdown-menu extended tasks">
+
+							<li>
+
+								<p>You have 12 pending tasks</p>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="task">
+
+								<span class="desc">New release v1.2</span>
+
+								<span class="percent">30%</span>
+
+								</span>
+
+								<span class="progress progress-success ">
+
+								<span style="width: 30%;" class="bar"></span>
+
+								</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="task">
+
+								<span class="desc">Application deployment</span>
+
+								<span class="percent">65%</span>
+
+								</span>
+
+								<span class="progress progress-danger progress-striped active">
+
+								<span style="width: 65%;" class="bar"></span>
+
+								</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="task">
+
+								<span class="desc">Mobile app release</span>
+
+								<span class="percent">98%</span>
+
+								</span>
+
+								<span class="progress progress-success">
+
+								<span style="width: 98%;" class="bar"></span>
+
+								</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="task">
+
+								<span class="desc">Database migration</span>
+
+								<span class="percent">10%</span>
+
+								</span>
+
+								<span class="progress progress-warning progress-striped">
+
+								<span style="width: 10%;" class="bar"></span>
+
+								</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="task">
+
+								<span class="desc">Web server upgrade</span>
+
+								<span class="percent">58%</span>
+
+								</span>
+
+								<span class="progress progress-info">
+
+								<span style="width: 58%;" class="bar"></span>
+
+								</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="task">
+
+								<span class="desc">Mobile development</span>
+
+								<span class="percent">85%</span>
+
+								</span>
+
+								<span class="progress progress-success">
+
+								<span style="width: 85%;" class="bar"></span>
+
+								</span>
+
+								</a>
+
+							</li>
+
+							<li class="external">
+
+								<a href="#">See all tasks <i class="m-icon-swapright"></i></a>
+
+							</li>
+
+						</ul>
+
+					</li>
+
+					<!-- END TODO DROPDOWN -->
+
+					<!-- BEGIN USER LOGIN DROPDOWN -->
+
+					<li class="dropdown user">
+
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+						<img alt="" src="<%=basePath%>/resource/media/image/avatar1_small.jpg" />
+
+						<span class="username">zengzhiwei</span>
+
+						<i class="icon-angle-down"></i>
+
+						</a>
+
+						<ul class="dropdown-menu">
+
+							<li><a href="extra_profile.html"><i class="icon-user"></i> My Profile</a></li>
+
+							<li><a href="page_calendar.html"><i class="icon-calendar"></i> My Calendar</a></li>
+
+							<li><a href="inbox.html"><i class="icon-envelope"></i> My Inbox(3)</a></li>
+
+							<li><a href="#"><i class="icon-tasks"></i> My Tasks</a></li>
+
+							<li class="divider"></li>
+
+							<li><a href="extra_lock.html"><i class="icon-lock"></i> Lock Screen</a></li>
+
+							<li><a href="login.html"><i class="icon-key"></i> Log Out</a></li>
+
+						</ul>
+
+					</li>
+
+					<!-- END USER LOGIN DROPDOWN -->
+
+				</ul>
+
+				<!-- END TOP NAVIGATION MENU --> 
+
+			</div>
+
+		</div>
+
+		<!-- END TOP NAVIGATION BAR -->
+
+	</div>
+
+	<!-- END HEADER -->
+
+	<!-- BEGIN CONTAINER -->
+
+	<div class="page-container">
+
+		<!-- BEGIN SIDEBAR -->
+
+		<div class="page-sidebar nav-collapse collapse">
+
+			<!-- BEGIN SIDEBAR MENU -->        
+
+			<ul class="page-sidebar-menu">
+
+				<li>
+
+					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+
+					<div class="sidebar-toggler hidden-phone"></div>
+
+					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+
+				</li>
+
+				<li>
+
+					<!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+
+					<form class="sidebar-search">
+
+						<div class="input-box">
+
+							<a href="javascript:;" class="remove"></a>
+
+							<input type="text" placeholder="Search..." />
+
+							<input type="button" class="submit" value=" " />
+
+						</div>
+
+					</form>
+
+					<!-- END RESPONSIVE QUICK SEARCH FORM -->
+
+				</li>
+
+				<li class="start active ">
+
+					<a href="index.html">
+
+					<i class="icon-home"></i> 
+
+					<span class="title">首页</span>
+
+					<span class="selected"></span>
+
+					</a>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-cogs"></i> 
+
+					<span class="title">订单管理</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="layout_horizontal_sidebar_menu.html">
+
+							Horzontal & Sidebar Menu</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_horizontal_menu1.html">
+
+							Horzontal Menu 1</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_horizontal_menu2.html">
+
+							Horzontal Menu 2</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_promo.html">
+
+							Promo Page</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_email.html">
+
+							Email Templates</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_ajax.html">
+
+							Content Loading via Ajax</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_sidebar_closed.html">
+
+							Sidebar Closed Page</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_blank_page.html">
+
+							Blank Page</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_boxed_page.html">
+
+							Boxed Page</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_boxed_not_responsive.html">
+
+							Non-Responsive Boxed Layout</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-bookmark-empty"></i> 
+
+					<span class="title">航空公司管理</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="ui_general.html">
+
+							General</a>
+
+						</li>
+
+						<li >
+
+							<a href="ui_buttons.html">
+
+							Buttons</a>
+
+						</li>
+
+						<li >
+
+							<a href="ui_modals.html">
+
+							Enhanced Modals</a>
+
+						</li>
+
+						<li >
+
+							<a href="ui_tabs_accordions.html">
+
+							Tabs & Accordions</a>
+
+						</li>
+
+						<li >
+
+							<a href="ui_jqueryui.html">
+
+							jQuery UI Components</a>
+
+						</li>
+
+						<li >
+
+							<a href="ui_sliders.html">
+
+							Sliders</a>
+
+						</li>
+
+						<li >
+
+							<a href="ui_tiles.html">
+
+							Tiles</a>
+
+						</li>
+
+						<li >
+
+							<a href="ui_typography.html">
+
+							Typography</a>
+
+						</li>
+
+						<li >
+
+							<a href="ui_tree.html">
+
+							Tree View</a>
+
+						</li>
+
+						<li >
+
+							<a href="ui_nestable.html">
+
+							Nestable List</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-table"></i> 
+
+					<span class="title">人员管理</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="form_layout.html">
+
+							Form Layouts</a>
+
+						</li>
+
+						<li >
+
+							<a href="form_samples.html">
+
+							Advance Form Samples</a>
+
+						</li>
+
+						<li >
+
+							<a href="form_component.html">
+
+							Form Components</a>
+
+						</li>
+
+						<li >
+
+							<a href="form_wizard.html">
+
+							Form Wizard</a>
+
+						</li>
+
+						<li >
+
+							<a href="form_validation.html">
+
+							Form Validation</a>
+
+						</li>
+
+						<li >
+
+							<a href="form_fileupload.html">
+
+							Multiple File Upload</a>
+
+						</li>
+
+						<li >
+
+							<a href="form_dropzone.html">
+
+							Dropzone File Upload</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-briefcase"></i> 
+
+					<span class="title">折扣管理</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="page_timeline.html">
+
+							<i class="icon-time"></i>
+
+							航班管理</a>
+
+						</li>
+
+						<li >
+
+							<a href="page_coming_soon.html">
+
+							<i class="icon-cogs"></i>
+
+							Coming Soon</a>
+
+						</li>
+
+						<li >
+
+							<a href="page_blog.html">
+
+							<i class="icon-comments"></i>
+
+							Blog</a>
+
+						</li>
+
+						<li >
+
+							<a href="page_blog_item.html">
+
+							<i class="icon-font"></i>
+
+							Blog Post</a>
+
+						</li>
+
+						<li >
+
+							<a href="page_news.html">
+
+							<i class="icon-coffee"></i>
+
+							News</a>
+
+						</li>
+
+						<li >
+
+							<a href="page_news_item.html">
+
+							<i class="icon-bell"></i>
+
+							News View</a>
+
+						</li>
+
+						<li >
+
+							<a href="page_about.html">
+
+							<i class="icon-group"></i>
+
+							About Us</a>
+
+						</li>
+
+						<li >
+
+							<a href="page_contact.html">
+
+							<i class="icon-envelope-alt"></i>
+
+							Contact Us</a>
+
+						</li>
+
+						<li >
+
+							<a href="page_calendar.html">
+
+							<i class="icon-calendar"></i>
+
+							Calendar</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-gift"></i> 
+
+					<span class="title">航班管理</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="extra_profile.html">
+
+							User Profile</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_lock.html">
+
+							Lock Screen</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_faq.html">
+
+							FAQ</a>
+
+						</li>
+
+						<li >
+
+							<a href="inbox.html">
+
+							Inbox</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_search.html">
+
+							Search Results</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_invoice.html">
+
+							Invoice</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_pricing_table.html">
+
+							Pricing Tables</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_image_manager.html">
+
+							Image Manager</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_404_option1.html">
+
+							404 Page Option 1</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_404_option2.html">
+
+							404 Page Option 2</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_404_option3.html">
+
+							404 Page Option 3</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_500_option1.html">
+
+							500 Page Option 1</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_500_option2.html">
+
+							500 Page Option 2</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li>
+
+					<a class="active" href="javascript:;">
+
+					<i class="icon-sitemap"></i> 
+
+					<span class="title">飞机管理</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li>
+
+							<a href="javascript:;">
+
+							查询
+
+
+							</a>
+
+							
+
+						</li>
+
+						<li>
+
+							<a href="javascript:;">
+
+							增加
+
+
+							</a>
+
+						</li>
+
+
+					</ul>
+
+				</li>
+
+				<li>
+
+					<a href="javascript:;">
+
+					<i class="icon-folder-open"></i> 
+
+					<span class="title">客户管理</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li>
+
+							<a href="javascript:;">
+
+							<i class="icon-cogs"></i> 
+
+							查询
+
+						
+
+							</a>
+
+							
+
+						</li>
+
+						<li>
+
+							<a href="javascript:;">
+
+							<i class="icon-globe"></i> 
+
+							增加
+
+						
+
+							</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-user"></i> 
+
+					<span class="title">座位管理</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="login.html">
+
+							Login Form 1</a>
+
+						</li>
+
+						<li >
+
+							<a href="login_soft.html">
+
+							Login Form 2</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-th"></i> 
+
+					<span class="title">Data Tables</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="table_basic.html">
+
+							Basic Tables</a>
+
+						</li>
+
+						<li >
+
+							<a href="table_responsive.html">
+
+							Responsive Tables</a>
+
+						</li>
+
+						<li >
+
+							<a href="table_managed.html">
+
+							Managed Tables</a>
+
+						</li>
+
+						<li >
+
+							<a href="table_editable.html">
+
+							Editable Tables</a>
+
+						</li>
+
+						<li >
+
+							<a href="table_advanced.html">
+
+							Advanced Tables</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-file-text"></i> 
+
+					<span class="title">Portlets</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="portlet_general.html">
+
+							General Portlets</a>
+
+						</li>
+
+						<li >
+
+							<a href="portlet_draggable.html">
+
+							Draggable Portlets</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-map-marker"></i> 
+
+					<span class="title">Maps</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="maps_google.html">
+
+							Google Maps</a>
+
+						</li>
+
+						<li >
+
+							<a href="maps_vector.html">
+
+							Vector Maps</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="last ">
+
+					<a href="charts.html">
+
+					<i class="icon-bar-chart"></i> 
+
+					<span class="title">Visual Charts</span>
+
+					</a>
+
+				</li>
+
+			</ul>
+
+			<!-- END SIDEBAR MENU -->
+
+		</div>
+
+		<!-- END SIDEBAR -->
+
+		<!-- BEGIN PAGE -->
+
+		<div class="page-content">
+
+			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+
+			<div id="portlet-config" class="modal hide">
+
+				<div class="modal-header">
+
+					<button data-dismiss="modal" class="close" type="button"></button>
+
+					<h3>Widget Settings</h3>
+
+				</div>
+
+				<div class="modal-body">
+
+					Widget settings form goes here
+
+				</div>
+
+			</div>
+
+			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+
+			<!-- BEGIN PAGE CONTAINER-->
+
+			<div class="container-fluid">
+
+				<!-- BEGIN PAGE HEADER-->
+
+				<div class="row-fluid">
+
+					<div class="span12">
+
+						<!-- BEGIN STYLE CUSTOMIZER -->
+
+						<div class="color-panel hidden-phone">
+
+							
+
+							<div class="color-mode-icons icon-color-close"></div>
+
+							<div class="color-mode">
+
+								<p>THEME COLOR</p>
+
+								<ul class="inline">
+
+									<li class="color-black current color-default" data-style="default"></li>
+
+									<li class="color-blue" data-style="blue"></li>
+
+									<li class="color-brown" data-style="brown"></li>
+
+									<li class="color-purple" data-style="purple"></li>
+
+									<li class="color-grey" data-style="grey"></li>
+
+									<li class="color-white color-light" data-style="light"></li>
+
+								</ul>
+
+								<label>
+
+									<span>Layout</span>
+
+									<select class="layout-option m-wrap small">
+
+										<option value="fluid" selected>Fluid</option>
+
+										<option value="boxed">Boxed</option>
+
+									</select>
+
+								</label>
+
+								<label>
+
+									<span>Header</span>
+
+									<select class="header-option m-wrap small">
+
+										<option value="fixed" selected>Fixed</option>
+
+										<option value="default">Default</option>
+
+									</select>
+
+								</label>
+
+								<label>
+
+									<span>Sidebar</span>
+
+									<select class="sidebar-option m-wrap small">
+
+										<option value="fixed">Fixed</option>
+
+										<option value="default" selected>Default</option>
+
+									</select>
+
+								</label>
+
+								<label>
+
+									<span>Footer</span>
+
+									<select class="footer-option m-wrap small">
+
+										<option value="fixed">Fixed</option>
+
+										<option value="default" selected>Default</option>
+
+									</select>
+
+								</label>
+
+							</div>
+
+						</div>
+
+						<!-- END BEGIN STYLE CUSTOMIZER -->    
+
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+
+						<h3 class="page-title">
+
+							首页 <small>Welcome！</small>
+
+						</h3>
+
+						<ul class="breadcrumb">
+
+							<li>
+
+								<i class="icon-home"></i>
+
+								<a href="index.html">首页</a> 
+
+								<i class="icon-angle-right"></i>
+
+							</li>
+
+							<li><a href="#"></a></li>
+
+							<li class="pull-right no-text-shadow">
+
+								<div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
+
+									<i class="icon-calendar"></i>
+
+									<span></span>
+
+									<i class="icon-angle-down"></i>
+
+								</div>
+
+							</li>
+
+						</ul>
+
+						<!-- END PAGE TITLE & BREADCRUMB-->
+
+					</div>
+
+				</div>
+
+<div id="dashboard">
+
+<table id="example" class="table table-bordered" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Office</th>
+        <th>Age</th>
+        <th>Start date</th>
+        <th>Salary</th>
+    </tr>
+    </thead>
+
+    <tfoot>
+    <tr>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Office</th>
+        <th>Age</th>
+        <th>Start date</th>
+        <th>Salary</th>
+    </tr>
+    </tfoot>
+
+    <tbody>
+    <tr>
+        <td>Tiger Nixon</td>
+        <td>System Architect</td>
+        <td>Edinburgh</td>
+        <td>61</td>
+        <td>2011/04/25</td>
+        <td>$320,800</td>
+    </tr>
+    <tr>
+        <td>Garrett Winters</td>
+        <td>Accountant</td>
+        <td>Tokyo</td>
+        <td>63</td>
+        <td>2011/07/25</td>
+        <td>$170,750</td>
+    </tr>
+    <tr>
+        <td>Ashton Cox</td>
+        <td>Junior Technical Author</td>
+        <td>San Francisco</td>
+        <td>66</td>
+        <td>2009/01/12</td>
+        <td>$86,000</td>
+    </tr>
+   
+    <tr>
+        <td>Brielle Williamson</td>
+        <td>Integration Specialist</td>
+        <td>New York</td>
+        <td>61</td>
+        <td>2012/12/02</td>
+        <td>$372,000</td>
+    </tr>
+    <tr>
+        <td>Herrod Chandler</td>
+        <td>Sales Assistant</td>
+        <td>San Francisco</td>
+        <td>59</td>
+        <td>2012/08/06</td>
+        <td>$137,500</td>
+    </tr>
+    
+    <tr>
+        <td>Sonya Frost</td>
+        <td>Software Engineer</td>
+        <td>Edinburgh</td>
+        <td>23</td>
+        <td>2008/12/13</td>
+        <td>$103,600</td>
+    </tr>
+    <tr>
+        <td>Jena Gaines</td>
+        <td>Office Manager</td>
+        <td>London</td>
+        <td>30</td>
+        <td>2008/12/19</td>
+        <td>$90,560</td>
+    </tr>
+   
+    <tr>
+        <td>Haley Kennedy</td>
+        <td>Senior Marketing Designer</td>
+        <td>London</td>
+        <td>43</td>
+        <td>2012/12/18</td>
+        <td>$313,500</td>
+    </tr>
+    <tr>
+        <td>Tatyana Fitzpatrick</td>
+        <td>Regional Director</td>
+        <td>London</td>
+        <td>19</td>
+        <td>2010/03/17</td>
+        <td>$385,750</td>
+    </tr>
+    
+    <tr>
+        <td>Gloria Little</td>
+        <td>Systems Administrator</td>
+        <td>New York</td>
+        <td>59</td>
+        <td>2009/04/10</td>
+        <td>$237,500</td>
+    </tr>
+    
+    <tr>
+        <td>Jenette Caldwell</td>
+        <td>Development Lead</td>
+        <td>New York</td>
+        <td>30</td>
+        <td>2011/09/03</td>
+        <td>$345,000</td>
+    </tr>
+  
+    <tr>
+        <td>Doris Wilder</td>
+        <td>Sales Assistant</td>
+        <td>Sidney</td>
+        <td>23</td>
+        <td>2010/09/20</td>
+        <td>$85,600</td>
+    </tr>
+    <tr>
+        <td>Angelica Ramos</td>
+        <td>Chief Executive Officer (CEO)</td>
+        <td>London</td>
+        <td>47</td>
+        <td>2009/10/09</td>
+        <td>$1,200,000</td>
+    </tr>
+   
+    <tr>
+        <td>Brenden Wagner</td>
+        <td>Software Engineer</td>
+        <td>San Francisco</td>
+        <td>28</td>
+        <td>2011/06/07</td>
+        <td>$206,850</td>
+    </tr>
+   
+    <tr>
+        <td>Michelle House</td>
+        <td>Integration Specialist</td>
+        <td>Sidney</td>
+        <td>37</td>
+        <td>2011/06/02</td>
+        <td>$95,400</td>
+    </tr>
+    <tr>
+        <td>Suki Burks</td>
+        <td>Developer</td>
+        <td>London</td>
+        <td>53</td>
+        <td>2009/10/22</td>
+        <td>$114,500</td>
+    </tr>
+   
+    <tr>
+        <td>Martena Mccray</td>
+        <td>Post-Sales support</td>
+        <td>Edinburgh</td>
+        <td>46</td>
+        <td>2011/03/09</td>
+        <td>$324,050</td>
+    </tr>
+   
+    <tr>
+        <td>Hope Fuentes</td>
+        <td>Secretary</td>
+        <td>San Francisco</td>
+        <td>41</td>
+        <td>2010/02/12</td>
+        <td>$109,850</td>
+    </tr>
+    <tr>
+        <td>Vivian Harrell</td>
+        <td>Financial Controller</td>
+        <td>San Francisco</td>
+        <td>62</td>
+        <td>2009/02/14</td>
+        <td>$452,500</td>
+    </tr>
+   
+   
+    <tr>
+        <td>Sakura Yamamoto</td>
+        <td>Support Engineer</td>
+        <td>Tokyo</td>
+        <td>37</td>
+        <td>2009/08/19</td>
+        <td>$139,575</td>
+    </tr>
+   
+    <tr>
+        <td>Serge Baldwin</td>
+        <td>Data Coordinator</td>
+        <td>Singapore</td>
+        <td>64</td>
+        <td>2012/04/09</td>
+        <td>$138,575</td>
+    </tr>
+   
+    <tr>
+        <td>Jennifer Acosta</td>
+        <td>Junior Javascript Developer</td>
+        <td>Edinburgh</td>
+        <td>43</td>
+        <td>2013/02/01</td>
+        <td>$75,650</td>
+    </tr>
+    <tr>
+        <td>Cara Stevens</td>
+        <td>Sales Assistant</td>
+        <td>New York</td>
+        <td>46</td>
+        <td>2011/12/06</td>
+        <td>$145,600</td>
+    </tr>
+    <tr>
+        <td>Hermione Butler</td>
+        <td>Regional Director</td>
+        <td>London</td>
+        <td>47</td>
+        <td>2011/03/21</td>
+        <td>$356,250</td>
+    </tr>
+    <tr>
+        <td>Lael Greer</td>
+        <td>Systems Administrator</td>
+        <td>London</td>
+        <td>21</td>
+        <td>2009/02/27</td>
+        <td>$103,500</td>
+    </tr>
+   
+   
+    </tbody>
+</table>
+</div>
+				<!-- END PAGE HEADER-->
+
+			</div>
+
+			<!-- END PAGE CONTAINER-->    
+
+		</div>
+
+		<!-- END PAGE -->
+
+	</div>
+
+	<!-- END CONTAINER -->
+
+	<!-- BEGIN FOOTER -->
+
+	<div class="footer">
+
+		<div class="footer-inner">
+
+			2015 &copy; Nothing is impossible.
+
+		</div>
+
+		<div class="footer-tools">
+
+			<span class="go-top">
+
+			<i class="icon-angle-up"></i>
+
+			</span>
+
+		</div>
+
+	</div>
+
+	<!-- END FOOTER -->
+
+	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+
+	<!-- BEGIN CORE PLUGINS -->
+
+	<script src="<%=basePath%>/resource/media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+	
+	<!-- 自定义 -->
+	<script src="<%=basePath %>/behind/plane/js/jquery.dataTables.js"></script>
+	<script src="<%=basePath %>/behind/plane/js/search.js"></script>
+	
+
+	<script src="<%=basePath%>/resource/media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+
+	<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+
+	<script src="<%=basePath%>/resource/media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
+
+	<script src="<%=basePath%>/resource/media/js/bootstrap.min.js" type="text/javascript"></script>
+  
+
+	<script src="<%=basePath%>/resource/media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+
+	<script src="<%=basePath%>/resource/media/js/jquery.blockui.min.js" type="text/javascript"></script>  
+
+	<script src="<%=basePath%>/resource/media/js/jquery.cookie.min.js" type="text/javascript"></script>
+
+	<script src="<%=basePath%>/resource/media/js/jquery.uniform.min.js" type="text/javascript" ></script>
+
+
+	
+
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+	<script src="<%=basePath%>/resource/media/js/app.js" type="text/javascript"></script>
+
+	<script src="<%=basePath%>/resource/media/js/index.js" type="text/javascript"></script>        
+
+	<!-- END PAGE LEVEL SCRIPTS -->  
+	
+	
+
+	<script>
+
+		jQuery(document).ready(function() {    
+
+		   App.init(); // initlayout and core plugins
+
+		   Index.init();
+
+		   Index.initJQVMAP(); // init index page's custom scripts
+
+		   Index.initCalendar(); // init index page's custom scripts
+
+		   Index.initCharts(); // init index page's custom scripts
+
+		   Index.initChat();
+
+		   Index.initMiniCharts();
+
+		   Index.initDashboardDaterange();
+
+		   Index.initIntro();
+
+		});
+
+	</script>
+
+	<!-- END JAVASCRIPTS -->
+
+<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script></body>
+
+<!-- END BODY -->
+
+</html>

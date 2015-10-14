@@ -1,0 +1,7 @@
+@CHARSET "UTF-8";
+#myTab  li a{
+	color:#fff;
+	}
+#myTab li.active a{
+	color:#96D2FF;
+	}

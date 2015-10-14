@@ -1,0 +1,8 @@
+@CHARSET "UTF-8";
+#data-table tbody tr.odd td.ptype:hover{
+	background-color:#93CFE5;
+	}
+	
+	#data-table tbody .even td.ptype:hover{
+	background-color:#93CFE5;
+	}

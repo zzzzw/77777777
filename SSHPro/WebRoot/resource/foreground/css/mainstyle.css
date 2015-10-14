@@ -1,0 +1,41 @@
+@CHARSET "UTF-8";
+	#foot a:link,a:visited,a:active{
+	color:#666;
+	text-decoration:none
+}
+ body {
+            padding-top: 20px;
+            padding-bottom: 40px;
+            color: #5a5a5a;
+          background-color: #fff;
+        }
+#foot a:hover{
+	color:#333;
+	text-decoration:none
+}
+	#foot ul li{
+	margin-top:7px;
+	}
+	
+	#foot ul{
+	   list-style:none;
+	   margin-left:-40px;
+	}
+	
+
+	
+	#foot h4{
+	margin-top:20px;
+	margin-bottom:20px;
+	}
+	
+	#foot{
+	margin-top:140px;
+	background-color:#FBFBFB;
+	}
+
+
+li{
+	list-style:none
+}
+	

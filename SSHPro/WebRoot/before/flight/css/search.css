@@ -1,0 +1,19 @@
+@CHARSET "UTF-8";
+.plane_s{
+	float:left;
+	display:inline
+}
+.plane_e{
+	float:left;display:inline
+}
+.mid{
+	float:left;
+	display:inline;
+	padding-top:20px;
+	padding-left:10px;
+	padding-right:10px;
+}
+.table th, .table td { 
+	text-align: center; 
+	height:38px;
+}

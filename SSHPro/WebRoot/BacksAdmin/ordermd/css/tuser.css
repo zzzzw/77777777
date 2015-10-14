@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+  #table_id tbody tr.odd td:hover{
+	background-color:#93CFE5;
+	}
+	
+	#table_id tbody .even td:hover{
+	background-color:#93CFE5;
+	}
+	
+/*	#table_id tbody tr.even{
+	background-color:#93CFE5;
+	}*/
+	
+	
+	
